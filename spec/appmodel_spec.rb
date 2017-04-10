@@ -7,7 +7,7 @@ require_relative '../lib/appmodel'
 describe Appmodel do
 
   let(:static_file1) { "#{File.dirname(__FILE__)}/fixtures/carmax.app_model.json" }
-  let(:appModel) { Appmodel::QModel.new(static_file1) }
+  let(:appModel) { Appmodel::Model.new(static_file1) }
 
 
   before do
