@@ -1,0 +1,172 @@
+{
+    "level_1": {
+
+        "sublevel_1_1": {
+
+            "sublevel_1_1_1": {
+
+                "elt1": {
+                    "locator": "#userid",
+                    "visible_when": "always"
+                },
+
+                "elt2": {
+                    "locator": "//*[@id='password']",
+                    "visible_when": "never"
+                },
+
+                "login_frame": {
+
+                    "login_form": {
+                        "userid": {
+                            "locator": "#userid"
+                        },
+                        "password": {
+                            "locator": "#pass"
+                        }
+                    },
+
+
+                    "header": {
+                        "locator": "#header"
+                    },
+
+                    "footer": {
+
+                        "info": {
+                            "locator": "#locator"
+                        },
+
+                        "date": {
+                            "locator": "#date"
+                        },
+
+                        "sublinks": {
+
+                            "home": {
+                                "locator": "#home"
+                            },
+
+                            "about": {
+                                "locator": "#about"
+                            }
+                        }
+                    }
+                },
+
+                "form1": {
+
+                    "form_elt1": {
+                        "locator": "label1"
+                    },
+
+                    "form_elt2": {
+                        "locator": "label2"
+                    },
+
+                    "subformX": {
+
+                        "subform_elt1": {
+                            "locator": "subform1_loc"
+                        },
+
+                        "subform_elt2": {
+                            "locator": "subform1_loc2"
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    "sideNav": {
+
+        "home_link": {
+            "frame": "frame(f1)",
+            "locator": "css=#name"
+        }
+    },
+
+    "home": {
+        "cars4sale": {
+            "locator": "//a[text()='Find Cars for Sale']",
+            "visible_when": "always",
+            "reqid": "REQ-Home"
+        },
+        "whyCarMax": {
+            "locator": "//*[@id='header']//a[text()='Why CarMax']",
+            "visible_when": "text(page(home).get(cars4sale))=Find Cars for Sale",
+            "reqid": "REQ-Home"
+        },
+
+        "hoverhit00": {
+            "locator": "//abc",
+            "visible_when": "hover(page(home).get(cars4sale))"
+        },
+
+        "sign_in": {
+            "locator": "//input[text()='Sign in']",
+            "visible_when": "title(/Carmax.*online/)",
+            "reqid": "REQ-Home"
+        },
+
+        "register": {
+            "locator": "//*[@id='register']",
+            "reqid": "REQ-register",
+            "visible_when": [
+                { "visible_when": "visible(page(home).get(sign_in))=true"},
+                { "visible_when": "visible(page(home).get(cars4sale))=true"},
+                { "visible_when": "visible(page(home).get(sign_in))=false"},
+                { "visible_when": "title(Car[mM]ax.*online)"}
+            ]
+        },
+
+        "mycarmax": {
+            "locator": "//*[@id='mycarmax']",
+            "visible_when": "title(CarMax - Browse used cars and new cars online)",
+            "reqid": "REQ-Home"
+        },
+
+        "logoff": {
+          "locator": "//*[text()='Log off']",
+          "visible_when": "click(page(research).get(fuel_economy))",
+          "reqid": "REQ-Home"
+        }
+    },
+
+    "research": {
+
+        "fuel_economy": {
+            "locator": ""
+        }
+
+    },
+
+    "main_nav": {
+        "search_input": {
+            "locator": "//input[@id='search']",
+            "visible_when": "always"
+        },
+        "search_btn": {
+            "locator": "//a[@id='search-btn']",
+            "visible_when": "always"
+        }
+    },
+
+    "find_cars_by": {
+        "make": {
+            "locator": "//*[@id='bantab0']/a[contains(text(), 'Make')]",
+            "visible_when": "always"
+        },
+
+        "price_list": {
+            "locator": "//*[@id='minPriceFilter']",
+            "visible_when": "text(//*[@id='minPriceFilter'])=$0"
+        }
+    },
+
+    "search": {
+        "header": "//title"
+    }
+}
+
