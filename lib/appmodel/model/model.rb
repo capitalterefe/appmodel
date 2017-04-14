@@ -56,14 +56,24 @@ module Appmodel
 
         if rc
           hit = { 'frame' => rc[1], 'locator' => rc[3] }
+
+        elsif _locator.match(/^\s*\//)
+          hit = { 'locator' => _locator.match(/^\s*(.*)\s*$/)[1] }
+
+        elsif _locator.match(/^\s*(css|CSS)\s*=\s*(.*)\s*$/)
+         # hit = { 'locator' => _locator.match(/^\s*(css|CSS)\s*=\s*(.*)\s*$/)[2] }
+          hit = { 'locator' => _locator }
+
         elsif _locator.match(/^\s*[lL]ocator\((.*)\)\s*$/)
           hit = { 'locator' => _locator.match(/^\s*[lL]ocator\((.*)\)\s*$/)[1] }
-        else
+        elsif _locator.match(/^\s*([([fF]rame\([^\(]*?\)\.)]*)\.([lL]ocator\((.*)\))\s*$/)
           rc=_locator.match(/^\s*([([fF]rame\([^\(]*?\)\.)]*)\.([lL]ocator\((.*)\))\s*$/)
 
           if rc
             hit = { 'frame' => rc[1], 'locator' => rc[2]}
           end
+        else
+          hit = { 'locator' => _locator }
         end
 
       elsif _locator.is_a?(Hash) && _locator.has_key?('locator')
