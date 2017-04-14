@@ -71,6 +71,11 @@ describe Appmodel do
       expect(_hit).to have_key('locator')
     end
 
+    it 'should return locator' do
+      _hit = Appmodel::Model.parseLocator("//*[@id='main']/div[1]/table[1]/thead/tr/th[text()='Type'][1]")
+      puts __FILE__ + (__LINE__).to_s + " HIT => #{_hit}"
+    end
+
   end
 
 
